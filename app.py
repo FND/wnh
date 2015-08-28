@@ -25,11 +25,8 @@ def index():
 
 @app.route("/articles")
 def articles():
-    with open(STORE) as fh:
-        store = yaml.load(fh)
-    # add article IDs
-    articles = ((i, Article.from_dict(article))
-            for i, article in enumerate(_retrieve("articles")))
+    articles = (Article.from_dict(article, aid)
+            for aid, article in enumerate(_retrieve("articles")))
     return render_template("articles.html", title="articles", articles=articles)
 
 
