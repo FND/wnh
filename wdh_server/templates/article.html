@@ -21,21 +21,7 @@
 		</dd>
 		{% endif %}
 
-		<dt>authors</dt>
-		<dd>
-			<ul>
-				{% for handle in article.authors %}
-				<li>
-					<a href="{{ url_for("author", handle=handle) }}"
-							rel="http://rels.example.org/author">
-						{{ handle }}
-					</a>
-				</li>
-				{% endfor %}
-			</ul>
-		</dd>
-
-		<dt>tags</dt>
+        <dt>tags</dt>
 		<dd>
 			<ul>
 				{% for tag in article.tags %}
@@ -50,5 +36,17 @@
 		<dt>content</dt>
 		<dd data-type="text/html">{{ article.content }}</dd>
 	</dl>
+
+    <p>authors</p>
+    <ul>
+        {% for handle in article.authors %}
+        <li>
+            <a href="{{ url_for("author", handle=handle) }}"
+                    rel="http://rels.example.org/author">
+                {{ handle }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
 </article>
 {% endblock %}
